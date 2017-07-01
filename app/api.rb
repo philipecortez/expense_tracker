@@ -11,7 +11,6 @@ module ExpenseTracker
     end
 
     post '/expenses' do
-      puts params.inspect
       expense = JSON.parse(request.body.read)
       result = @ledger.record(expense)
 
@@ -24,7 +23,8 @@ module ExpenseTracker
     end
 
     get '/expenses/:date' do
-      JSON.generate([])
+      expenses = @ledger.expense_on(params[:date])
+      JSON.generate(expenses.map(&:to_h))
     end
   end
 end
