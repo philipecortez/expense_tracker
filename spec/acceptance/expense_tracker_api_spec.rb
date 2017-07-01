@@ -4,7 +4,7 @@ require_relative '../../app/api'
 
 module ExpenseTracker
   
-  RSpec.describe 'Expense tracker API' do
+  RSpec.describe 'Expense tracker API', :db do
     include Rack::Test::Methods
 
     def app
@@ -21,7 +21,6 @@ module ExpenseTracker
     end
     
     it 'records submitted expenses' do
-      pending 'need to persist expenses'
       coffee = post_expense(
         'payee' => 'Starbucks',
         'amount' => 5.75,
