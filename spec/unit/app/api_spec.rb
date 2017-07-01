@@ -58,7 +58,7 @@ module ExpenseTracker
         end
         
         before do
-          allow(ledger).to receive(:expense_on)
+          allow(ledger).to receive(:expenses_on)
                               .with('2017-06-12')
                               .and_return(expenses)
         end
@@ -76,7 +76,7 @@ module ExpenseTracker
 
       context 'when there is no expenses on the given moment' do
         before do
-          allow(ledger).to receive(:expense_on)
+          allow(ledger).to receive(:expenses_on)
                              .with('2017-06-12')
                              .and_return([])
         end
